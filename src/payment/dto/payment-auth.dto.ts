@@ -1,7 +1,8 @@
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { IsNotEmpty, IsOptional, IsDefined, IsDate } from 'class-validator';
 import { AdditionalInfoDto } from './additional-info.dto';
 import { BillingAddressDto } from './billing-address.dto';
 import { HeaderAuthDto } from './header-auth.dto';
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { CardInfoDto } from './card-info.dto';
 
 export class PaymentAuthDto
@@ -15,28 +16,29 @@ export class PaymentAuthDto
     @ApiProperty()
     idType: string;  
 
-    @ApiProperty()
+    @IsOptional()
+    @ApiPropertyOptional()
     orderOrigin: string;  
 
     @ApiProperty()
     paymentType: string;  
 
-    @ApiProperty()
+    @ApiPropertyOptional()
     transactionType: string;  
 
     @ApiProperty()
     externalOrderId: string;  
 
-    @ApiProperty({ type: HeaderAuthDto })
+    @ApiPropertyOptional({ type: HeaderAuthDto })
     header: HeaderAuthDto;
 
-    @ApiProperty({ type: CardInfoDto })
+    @ApiPropertyOptional({ type: CardInfoDto })
     cardInfo: CardInfoDto;
 
-    @ApiProperty({ type: BillingAddressDto })
+    @ApiPropertyOptional({ type: BillingAddressDto })
     billingAddress:  BillingAddressDto;
 
-    @ApiProperty({ type: AdditionalInfoDto })
+    @ApiPropertyOptional({ type: AdditionalInfoDto })
     additionalInfo:  AdditionalInfoDto;
     
 }
